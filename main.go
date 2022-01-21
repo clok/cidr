@@ -30,7 +30,7 @@ func main() {
 
 	app := cli.NewApp()
 	app.Name = "cidr"
-	app.Copyright = "(c) 2021 Derek Smith"
+	app.Copyright = "(c) 2022 Derek Smith"
 	app.Authors = []*cli.Author{
 		{
 			Name:  "Derek Smith",
