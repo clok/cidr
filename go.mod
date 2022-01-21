@@ -3,8 +3,8 @@ module github.com/clok/cidr
 go 1.17
 
 require (
-	github.com/clok/cdocs v1.1.0
-	github.com/clok/kemba v1.1.0
+	github.com/clok/cdocs v1.2.0
+	github.com/clok/kemba v1.1.1
 	github.com/urfave/cli/v2 v2.3.0
 )
 

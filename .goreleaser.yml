@@ -37,3 +37,22 @@ changelog:
 
 snapshot:
   name_template: "{{ .Tag }}-next"
+
+dockers:
+  - ids:
+      - cidr
+    image_templates:
+      - "ghcr.io/clok/cidr:{{ .RawVersion }}"
+      - "ghcr.io/clok/cidr:latest"
+
+brews:
+  - tap:
+      owner: clok
+      name: homebrew-cidr
+    homepage: "https://clokwork.net/cidr/"
+    description: "CLI tool for checking IPs against CIDR blocks"
+    license: "MIT"
+    test: |
+      system "#{bin}/cidr --help"
+    install: |
+      bin.install "cidr"

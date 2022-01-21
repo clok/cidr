@@ -22,6 +22,7 @@ func main() {
 
 	im, err := cdocs.InstallManpageCommand(&cdocs.InstallManpageCommandInput{
 		AppName: "cidr",
+		Hidden:  true,
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -29,6 +30,13 @@ func main() {
 
 	app := cli.NewApp()
 	app.Name = "cidr"
+	app.Copyright = "(c) 2021 Derek Smith"
+	app.Authors = []*cli.Author{
+		{
+			Name:  "Derek Smith",
+			Email: "derek@clokwork.net",
+		},
+	}
 	app.Version = version
 	app.Usage = "tool for checking IPs against CIDR blocks"
 	app.Commands = []*cli.Command{
