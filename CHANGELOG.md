@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v0.0.2"></a>
+## [v0.0.2] - 2022-01-21
+### Chores
+- adjust copyright date
+  
+  ### Features
+- **check:** assume 32 mask when no mask is given
+  
+  
 <a name="v0.0.1"></a>
 ## v0.0.1 - 2022-01-21
 ### Bug Fixes
@@ -12,9 +21,11 @@
 - **changelog:** generate initial changelog
   - **cli:** update build pipeline and docs
   - **docs:** updating docs for version v0.0.1
+  - **release:** v0.0.1
   
   ### Features
 - **check:** initial check command
   
   
-[Unreleased]: https://github.com/clok/cidr/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/clok/cidr/compare/v0.0.2...HEAD
+[v0.0.2]: https://github.com/clok/cidr/compare/v0.0.1...v0.0.2
