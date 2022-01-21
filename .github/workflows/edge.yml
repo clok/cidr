@@ -33,4 +33,4 @@ jobs:
       - name: Build and Push docker image
         run: |
           DOCKER_TAG=edge make docker
-          docker push ${{ env.DOCKER_REGISTRY }}/clok/sm:edge
+          docker push ${{ env.DOCKER_REGISTRY }}/clok/cidr:edge
