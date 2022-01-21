@@ -68,8 +68,8 @@ following tags:
 - `x.y.z` (versions): Images that are build from the tagged versions within Github.
 
 ```bash
-docker pull ghcr.io/goodwaygroup/cidr
-docker run -v "$PWD":/workdir ghcr.io/goodwaygroup/cidr --version
+docker pull ghcr.io/clok/cidr
+docker run -v "$PWD":/workdir ghcr.io/clok/cidr --version
 ```
 
 ### man page
