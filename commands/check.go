@@ -3,6 +3,7 @@ package commands
 import (
 	"fmt"
 	"net"
+	"regexp"
 	"strings"
 
 	"github.com/clok/kemba"
@@ -57,6 +58,9 @@ var (
 			// Get IPs
 			var ips []*net.IPNet
 			for _, ip := range strings.Split(c.String("ips"), ",") {
+				if ok, _ := regexp.MatchString(`/\d{1,2}$`, ip); !ok {
+					ip = fmt.Sprintf("%s/32", ip)
+				}
 				_, ipv4Net, err := net.ParseCIDR(ip)
 				if err != nil {
 					return err
@@ -67,7 +71,7 @@ var (
 			kl.Extend("ips").Printf("total IPs %d", len(ips))
 
 			for _, ip := range ips {
-				if ip.String() == "0.0.0.0/0" {
+				if strings.HasPrefix(ip.String(), "0.0.0.0") {
 					fmt.Printf("%s is in ALL CIDR sets\n", ip.String())
 				} else if ok, cidr := isCiderIn(ip, blocks); ok {
 					fmt.Printf("%s is in CIDR %s\n", ip.String(), cidr)
