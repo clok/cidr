@@ -1,0 +1,52 @@
+.nh
+.TH cidr 8
+
+.SH NAME
+.PP
+cidr \- tool for checking IPs against CIDR blocks
+
+
+.SH SYNOPSIS
+.PP
+cidr
+
+
+.SH COMMAND TREE
+.RS
+.IP \(bu 2
+check
+\[la]#check\[ra]
+.IP \(bu 2
+version, v
+\[la]#version-v\[ra]
+
+.RE
+
+.PP
+\fBUsage\fP:
+
+.PP
+.RS
+
+.nf
+cidr [GLOBAL OPTIONS] command [COMMAND OPTIONS] [ARGUMENTS...]
+
+.fi
+.RE
+
+
+.SH COMMANDS
+.SH check
+.PP
+check IP against range of CIDR blocks
+
+.PP
+\fB\-\-blocks, \-b\fP="": CIDR blocks to be checked (csv)
+
+.PP
+\fB\-\-ips, \-i\fP="": CSV list of IPs with masks (csv)
+
+.SH version, v
+.PP
+Print version info
+
