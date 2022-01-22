@@ -11,7 +11,8 @@ import (
 )
 
 var (
-	k = kemba.New("cidr:commands")
+	k     = kemba.New("cidr:commands")
+	rMask = regexp.MustCompile(`/\d{1,2}$`)
 )
 
 func isCiderIn(input *net.IPNet, cidrs []*net.IPNet) (bool, string) {
@@ -43,6 +44,8 @@ var (
 		},
 		Action: func(c *cli.Context) error {
 			kl := k.Extend("check")
+			kli := k.Extend("ips")
+			klb := kl.Extend("blocks")
 
 			// Get CIDR blocks
 			var blocks []*net.IPNet
@@ -53,12 +56,12 @@ var (
 				}
 				blocks = append(blocks, ipv4Net)
 			}
-			kl.Extend("blocks").Printf("total CIDR Blocks %d", len(blocks))
+			klb.Printf("total CIDR Blocks %d", len(blocks))
 
 			// Get IPs
 			var ips []*net.IPNet
 			for _, ip := range strings.Split(c.String("ips"), ",") {
-				if ok, _ := regexp.MatchString(`/\d{1,2}$`, ip); !ok {
+				if !rMask.MatchString(ip) {
 					ip = fmt.Sprintf("%s/32", ip)
 				}
 				_, ipv4Net, err := net.ParseCIDR(ip)
@@ -68,7 +71,7 @@ var (
 				ips = append(ips, ipv4Net)
 			}
 
-			kl.Extend("ips").Printf("total IPs %d", len(ips))
+			kli.Printf("total IPs %d", len(ips))
 
 			for _, ip := range ips {
 				if strings.HasPrefix(ip.String(), "0.0.0.0") {

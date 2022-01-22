@@ -41,6 +41,7 @@ func main() {
 	app.Usage = "tool for checking IPs against CIDR blocks"
 	app.Commands = []*cli.Command{
 		commands.CommandCheck,
+		commands.CommandPipe,
 		im,
 		{
 			Name:    "version",
