@@ -17,6 +17,9 @@ cidr
 check
 \[la]#check\[ra]
 .IP \(bu 2
+pipe
+\[la]#pipe\[ra]
+.IP \(bu 2
 version, v
 \[la]#version-v\[ra]
 
@@ -45,6 +48,13 @@ check IP against range of CIDR blocks
 
 .PP
 \fB\-\-ips, \-i\fP="": CSV list of IPs with masks (csv)
+
+.SH pipe
+.PP
+command | cidr pipe
+
+.PP
+\fB\-\-blocks, \-b\fP="": CIDR blocks to be checked (csv)
 
 .SH version, v
 .PP

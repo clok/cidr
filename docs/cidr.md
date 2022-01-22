@@ -8,6 +8,7 @@ cidr
 # COMMAND TREE
 
 - [check](#check)
+- [pipe](#pipe)
 - [version, v](#version-v)
 
 **Usage**:
@@ -24,6 +25,12 @@ check IP against range of CIDR blocks
 **--blocks, -b**="": CIDR blocks to be checked (csv)
 
 **--ips, -i**="": CSV list of IPs with masks (csv)
+
+## pipe
+
+command | cidr pipe
+
+**--blocks, -b**="": CIDR blocks to be checked (csv)
 
 ## version, v
 
