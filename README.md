@@ -22,6 +22,7 @@ AUTHOR:
 
 COMMANDS:
    check       check IP against range of CIDR blocks
+   pipe        command | cidr pipe
    version, v  Print version info
    help, h     Shows a list of commands or help for one command
 
@@ -29,7 +30,7 @@ GLOBAL OPTIONS:
    --help, -h  show help (default: false)
 
 COPYRIGHT:
-   (c) 2021 Derek Smith
+   (c) 2022 Derek Smith
 ```
 
 - [Documentation](./docs/cidr.md)
