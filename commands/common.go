@@ -105,7 +105,7 @@ func processLine(opts *processLineInput) error {
 	ips := rIPs.FindAllStringSubmatch(line, -1)
 	switch {
 	case len(ips) == 0 && opts.inverse:
-		fmt.Println(strings.Replace(strings.Replace(line, "\r\n", "", -1), "\n", "", -1))
+		fmt.Println(strings.ReplaceAll(strings.ReplaceAll(line, "\r\n", ""), "\n", ""))
 	default:
 		// track to avoid printing duplicate lines
 		var done bool
@@ -123,10 +123,10 @@ func processLine(opts *processLineInput) error {
 			}
 			if ok, cidr := isCiderIn(ipv4Net, opts.blocks); ok && !opts.inverse {
 				kfpld.Printf("%s is in CIDR %s", ip, cidr)
-				fmt.Println(strings.Replace(strings.Replace(line, "\r\n", "", -1), "\n", "", -1))
+				fmt.Println(strings.ReplaceAll(strings.ReplaceAll(line, "\r\n", ""), "\n", ""))
 				done = true
 			} else if !ok && opts.inverse {
-				fmt.Println(strings.Replace(strings.Replace(line, "\r\n", "", -1), "\n", "", -1))
+				fmt.Println(strings.ReplaceAll(strings.ReplaceAll(line, "\r\n", ""), "\n", ""))
 				done = true
 			}
 		}
