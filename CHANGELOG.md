@@ -2,10 +2,21 @@
 ## [Unreleased]
 
 
+<a name="v0.1.0"></a>
+## [v0.1.0] - 2022-01-24
+### Bug Fixes
+- **filter:** inverse excludes lines correctly when there are multiple IPs
+  
+  ### Chores
+- update README
+  - add test coverage push to coveralls.io
+  
+  
 <a name="v0.0.7"></a>
 ## [v0.0.7] - 2022-01-24
 ### Chores
 - clean up golangci-lint
+  - **release:** v0.0.7
   
   
 <a name="v0.0.6"></a>
@@ -71,7 +82,8 @@
 - **check:** initial check command
   
   
-[Unreleased]: https://github.com/clok/cidr/compare/v0.0.7...HEAD
+[Unreleased]: https://github.com/clok/cidr/compare/v0.1.0...HEAD
+[v0.1.0]: https://github.com/clok/cidr/compare/v0.0.7...v0.1.0
 [v0.0.7]: https://github.com/clok/cidr/compare/v0.0.6...v0.0.7
 [v0.0.6]: https://github.com/clok/cidr/compare/v0.0.5...v0.0.6
 [v0.0.5]: https://github.com/clok/cidr/compare/v0.0.4...v0.0.5
