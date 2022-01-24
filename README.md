@@ -15,22 +15,24 @@ NAME:
    cidr - tool for checking IPs against CIDR blocks
 
 USAGE:
-   main [global options] command [command options] [arguments...]
+   cidr [global options] command [command options] [arguments...]
 
 AUTHOR:
    Derek Smith <derek@clokwork.net>
 
 COMMANDS:
    check       check IP against range of CIDR blocks
-   pipe        command | cidr pipe
+   filter      Filters lines in log files of pipe input
    version, v  Print version info
    help, h     Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
-   --help, -h  show help (default: false)
+   --help, -h     show help (default: false)
+   --version, -v  print the version (default: false)
 
 COPYRIGHT:
    (c) 2022 Derek Smith
+
 ```
 
 - [Documentation](./docs/cidr.md)
