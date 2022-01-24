@@ -3,26 +3,10 @@ package commands
 import (
 	"fmt"
 	"net"
-	"regexp"
 	"strings"
 
-	"github.com/clok/kemba"
 	"github.com/urfave/cli/v2"
 )
-
-var (
-	k     = kemba.New("cidr:commands")
-	rMask = regexp.MustCompile(`/\d{1,2}$`)
-)
-
-func isCiderIn(input *net.IPNet, cidrs []*net.IPNet) (bool, string) {
-	for _, cidr := range cidrs {
-		if cidr.Contains(input.IP) {
-			return true, cidr.String()
-		}
-	}
-	return false, ""
-}
 
 var (
 	CommandCheck = &cli.Command{

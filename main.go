@@ -40,8 +40,10 @@ func main() {
 	app.Version = version
 	app.Usage = "tool for checking IPs against CIDR blocks"
 	app.Commands = []*cli.Command{
+		// Check checks input flag with provided CIDR blocks
 		commands.CommandCheck,
-		commands.CommandPipe,
+		// Filter accepts a file or pipe and filters rows based on CIDR blocks
+		commands.CommandFilter,
 		im,
 		{
 			Name:    "version",
