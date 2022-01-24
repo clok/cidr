@@ -2,10 +2,17 @@
 ## [Unreleased]
 
 
+<a name="v0.0.7"></a>
+## [v0.0.7] - 2022-01-24
+### Chores
+- clean up golangci-lint
+  
+  
 <a name="v0.0.6"></a>
 ## [v0.0.6] - 2022-01-24
 ### Chores
 - **docs:** updating docs for version v0.0.6
+  - **release:** v0.0.6
   
   ### Features
 - **filter:** add filter from file glob and pipe for given CIDR blocks
@@ -64,7 +71,8 @@
 - **check:** initial check command
   
   
-[Unreleased]: https://github.com/clok/cidr/compare/v0.0.6...HEAD
+[Unreleased]: https://github.com/clok/cidr/compare/v0.0.7...HEAD
+[v0.0.7]: https://github.com/clok/cidr/compare/v0.0.6...v0.0.7
 [v0.0.6]: https://github.com/clok/cidr/compare/v0.0.5...v0.0.6
 [v0.0.5]: https://github.com/clok/cidr/compare/v0.0.4...v0.0.5
 [v0.0.4]: https://github.com/clok/cidr/compare/v0.0.3...v0.0.4
