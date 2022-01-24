@@ -266,6 +266,6 @@ test 1.2.3.256 test
 		_ = w.Close()
 		out, _ := ioutil.ReadAll(r)
 		os.Stdout = rescueStdout
-		is.Equal("test [255.255.255.255 123.1.4.127 256.256.256.256 123.1.4.1] test\n256.256.256.256\n8.8.8.8\ntest 1.2.3.256 test\n0.0.0.0.0.0.0.0\n1.2.3.777\n", string(out))
+		is.Equal("256.256.256.256\n8.8.8.8\ntest 1.2.3.256 test\n0.0.0.0.0.0.0.0\n1.2.3.777\n", string(out))
 	})
 }

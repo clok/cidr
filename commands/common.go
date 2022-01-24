@@ -108,11 +108,8 @@ func processLine(opts *processLineInput) error {
 		fmt.Println(strings.ReplaceAll(strings.ReplaceAll(line, "\r\n", ""), "\n", ""))
 	default:
 		// track to avoid printing duplicate lines
-		var done bool
+		var hasIP bool
 		for _, found := range ips {
-			if done {
-				break
-			}
 			ip := found[1]
 			if !rMask.MatchString(ip) {
 				ip = fmt.Sprintf("%s/32", ip)
@@ -121,14 +118,15 @@ func processLine(opts *processLineInput) error {
 			if err != nil {
 				return err
 			}
-			if ok, cidr := isCiderIn(ipv4Net, opts.blocks); ok && !opts.inverse {
-				kfpld.Printf("%s is in CIDR %s", ip, cidr)
-				fmt.Println(strings.ReplaceAll(strings.ReplaceAll(line, "\r\n", ""), "\n", ""))
-				done = true
-			} else if !ok && opts.inverse {
-				fmt.Println(strings.ReplaceAll(strings.ReplaceAll(line, "\r\n", ""), "\n", ""))
-				done = true
+
+			if ok, cidr := isCiderIn(ipv4Net, opts.blocks); ok {
+				kfpld.Printf("line contains %s which is in CIDR %s", ip, cidr)
+				hasIP = true
 			}
+		}
+
+		if (hasIP && !opts.inverse) || (!hasIP && opts.inverse) {
+			fmt.Println(strings.ReplaceAll(strings.ReplaceAll(line, "\r\n", ""), "\n", ""))
 		}
 	}
 	return nil
