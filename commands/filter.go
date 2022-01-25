@@ -11,8 +11,9 @@ import (
 
 var (
 	CommandFilter = &cli.Command{
-		Name:  "filter",
-		Usage: "Filters lines in log files of pipe input",
+		Name:    "filter",
+		Aliases: []string{"f"},
+		Usage:   "Filters lines in log files of pipe input",
 		UsageText: `
 Filters lines in log files of pipe input, printing to STDOUT the lines that
 contain an IP that is within the provided CIDR blocks.

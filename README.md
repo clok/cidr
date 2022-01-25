@@ -21,21 +21,20 @@ AUTHOR:
    Derek Smith <derek@clokwork.net>
 
 COMMANDS:
-   check       check IP against range of CIDR blocks
-   filter      Filters lines in log files of pipe input
+   check, c    Check IP against range of CIDR blocks
+   filter, f   Filters lines in log files of pipe input
    version, v  Print version info
    help, h     Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
 
 COPYRIGHT:
    (c) 2022 Derek Smith
-
 ```
 
 - [Documentation](./docs/cidr.md)
+- [Use Cases](#use-cases)
 - [Installation](#installation)
     - [Homebrew](#homebrewhttpsbrewsh-for-macos-users)
     - [curl binary](#curl-binary)
@@ -44,6 +43,36 @@ COPYRIGHT:
 - [Versioning](#versioning)
 - [Authors](#authors)
 - [License](#license)
+
+## Use Cases
+
+The `check` command allows for a quick check of a list of IPs and Blocks.
+```text
+$ cidr check --blocks 172.12.0.0/16,172.10.0.0/16 --ips 172.12.1.56,171.10.123.57,172.10.0.255/32
+172.12.1.56/32 is in CIDR 172.12.0.0/16
+171.10.123.57/32 is NOT in CIDR set
+172.10.0.255/32 is in CIDR 172.10.0.0/16
+```
+
+The `filter` command is useful for filtering large data sets like access log files.
+```text
+$ cidr filter --blocks 10.2.120.0/8,10.2.122.0/8,10.20.128.20/29 --path '/var/log/http/**/access*.log'
+< outputs to STDOUT all lines that contain an IP that is within a CIDR blocks provided >
+```
+
+The `filter` command can also be used with a pipe.
+```text
+$ cidr filter --blocks 10.2.120.0/8,10.2.122.0/8,10.20.128.20/29 < /var/log/http/access-20220120-18.log
+< outputs to STDOUT all lines that contain an IP that is within a CIDR blocks provided >
+```
+
+Finally, the `filter` command accepts the `--inverse, i` flag which will output all lines that DO NOT contain
+an IP within a CIDR block provided. If a line has multiple IP addresses within it, then ALL IPs must not be within
+a CIDR block for the line to be output to `STDOUT`.
+```text
+$ cidr filter --blocks 10.2.120.0/8,10.2.122.0/8,10.20.128.20/29 --path '/var/log/http/**/access*.log' --inverse
+< outputs to STDOUT all lines that DO NOT contain an IP that is within a CIDR blocks provided >
+```
 
 ## Installation
 
@@ -86,7 +115,7 @@ $ cidr install-manpage
 ## Development
 
 1. Fork the [clok/cidr](https://github.com/clok/cidr) repo
-1. Use `go >= 1.16`
+1. Use `go >= 1.17`
 1. Branch & Code
 1. Run linters :broom: `golangci-lint run`
     - The project uses [golangci-lint](https://golangci-lint.run/usage/install/#local-installation)

@@ -9,8 +9,9 @@ import (
 
 var (
 	CommandCheck = &cli.Command{
-		Name:  "check",
-		Usage: "check IP against range of CIDR blocks",
+		Name:    "check",
+		Aliases: []string{"c"},
+		Usage:   "Check IP against range of CIDR blocks",
 		UsageText: `
 IPs that are provided without a mask will be assumed to be /32
 
@@ -44,7 +45,6 @@ CIDR blocks require a mask be provided.
 			}
 
 			for _, ip := range ips {
-				fmt.Println(ip.IP.String(), ip.String(), ip.Mask.String(), ip.IP.To16())
 				if strings.HasPrefix(ip.String(), "0.0.0.0") {
 					fmt.Printf("%s is in ALL CIDR sets\n", ip.String())
 				} else if ok, cidr := isCiderIn(ip, blocks); ok {
