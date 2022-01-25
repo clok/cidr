@@ -11,14 +11,75 @@ cidr \- tool for checking IPs against CIDR blocks
 cidr
 
 
+.SH DESCRIPTION
+.PP
+A CLI tool that is useful for quickly checking and filtering data by IP vs. CIDR blocks.
+
+.PP
+The 'check'' command allows for a quick check of a list of IPs and Blocks.
+
+.PP
+.RS
+
+.nf
+$ cidr check \-\-blocks 172.12.0.0/16,172.10.0.0/16 \-\-ips 172.12.1.56,171.10.123.57,172.10.0.255/32
+172.12.1.56/32 is in CIDR 172.12.0.0/16
+171.10.123.57/32 is NOT in CIDR set
+172.10.0.255/32 is in CIDR 172.10.0.0/16
+
+.fi
+.RE
+
+.PP
+The 'filter' command is useful for filtering large data sets like access log files.
+
+.PP
+.RS
+
+.nf
+$ cidr filter \-\-blocks 10.2.120.0/8,10.2.122.0/8,10.20.128.20/29 \-\-path '/var/log/http/**/access*.log'
+< outputs to STDOUT all lines that contain an IP that is within a CIDR blocks provided >
+
+.fi
+.RE
+
+.PP
+The 'filter' command can also be used with a pipe.
+
+.PP
+.RS
+
+.nf
+$ cidr filter \-\-blocks 10.2.120.0/8,10.2.122.0/8,10.20.128.20/29 < /var/log/http/access\-20220120\-18.log
+< outputs to STDOUT all lines that contain an IP that is within a CIDR blocks provided >
+
+.fi
+.RE
+
+.PP
+Finally, the 'filter' command accepts the '\-\-inverse, i' flag which will output all lines that DO NOT contain
+an IP within a CIDR block provided. If a line has multiple IP addresses within it, then ALL IPs must not be within
+a CIDR block for the line to be output to STDOUT.
+
+.PP
+.RS
+
+.nf
+$ cidr filter \-\-blocks 10.2.120.0/8,10.2.122.0/8,10.20.128.20/29 \-\-path '/var/log/http/**/access*.log' \-\-inverse
+< outputs to STDOUT all lines that DO NOT contain an IP that is within a CIDR blocks provided >
+
+.fi
+.RE
+
+
 .SH COMMAND TREE
 .RS
 .IP \(bu 2
-check
-\[la]#check\[ra]
+check, c
+\[la]#check-c\[ra]
 .IP \(bu 2
-filter
-\[la]#filter\[ra]
+filter, f
+\[la]#filter-f\[ra]
 .IP \(bu 2
 version, v
 \[la]#version-v\[ra]
@@ -39,9 +100,20 @@ cidr [GLOBAL OPTIONS] command [COMMAND OPTIONS] [ARGUMENTS...]
 
 
 .SH COMMANDS
-.SH check
+.SH check, c
 .PP
-check IP against range of CIDR blocks
+Check IP against range of CIDR blocks
+
+.PP
+.RS
+
+.nf
+IPs that are provided without a mask will be assumed to be /32
+
+CIDR blocks require a mask be provided.
+
+.fi
+.RE
 
 .PP
 \fB\-\-blocks, \-b\fP="": CIDR blocks to be checked (csv)
@@ -49,7 +121,7 @@ check IP against range of CIDR blocks
 .PP
 \fB\-\-ips, \-i\fP="": CSV list of IPs with masks (csv)
 
-.SH filter
+.SH filter, f
 .PP
 Filters lines in log files of pipe input
 
@@ -72,7 +144,7 @@ within the provided CIDR blocks.
 \fB\-\-blocks, \-b\fP="": CIDR blocks to be checked (csv)
 
 .PP
-\fB\-\-inverse, \-i\fP: print out lines that DO NOT match the CIDR check
+\fB\-\-inverse, \-i\fP: Print out lines that DO NOT match the CIDR check
 
 .PP
 \fB\-\-path, \-p\fP="": File path to files to filter, can be a glob. If not set, a pipe is assumed.
