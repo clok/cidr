@@ -17,11 +17,13 @@ var (
 
 	k     = kemba.New("cidr:commands")
 	kf    = k.Extend("filter")
-	kfb   = kf.Extend("blocks")
-	kfp   = kf.Extend("processReader")
+	kc    = k.Extend("common")
+	kfb   = kc.Extend("blocks")
+	kci   = kc.Extend("ips")
+	kfp   = kc.Extend("processReader")
 	kfpl  = kfp.Extend("lines")
 	kfpd  = kfp.Extend("debug")
-	kfpld = kf.Extend("processLine:debug")
+	kfpld = kc.Extend("processLine:debug")
 )
 
 func isCiderIn(input *net.IPNet, cidrs []*net.IPNet) (bool, string) {
@@ -44,6 +46,22 @@ func parseInputCIDRs(csv string) ([]*net.IPNet, error) {
 	}
 	kfb.Printf("total CIDR Blocks %d", len(blocks))
 	return blocks, nil
+}
+
+func parseInputIPs(csv string) ([]*net.IPNet, error) {
+	var ips []*net.IPNet
+	for _, ip := range strings.Split(csv, ",") {
+		if !rMask.MatchString(ip) {
+			ip = fmt.Sprintf("%s/32", ip)
+		}
+		_, ipv4Net, err := net.ParseCIDR(ip)
+		if err != nil {
+			return nil, err
+		}
+		ips = append(ips, ipv4Net)
+	}
+	kci.Printf("total IPs %d", len(ips))
+	return ips, nil
 }
 
 type processReaderInput struct {

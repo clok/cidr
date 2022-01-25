@@ -2,7 +2,6 @@ package commands
 
 import (
 	"fmt"
-	"net"
 	"strings"
 
 	"github.com/urfave/cli/v2"
@@ -12,6 +11,11 @@ var (
 	CommandCheck = &cli.Command{
 		Name:  "check",
 		Usage: "check IP against range of CIDR blocks",
+		UsageText: `
+IPs that are provided without a mask will be assumed to be /32
+
+CIDR blocks require a mask be provided.
+`,
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:     "ips",
@@ -27,37 +31,20 @@ var (
 			},
 		},
 		Action: func(c *cli.Context) error {
-			kl := k.Extend("check")
-			kli := k.Extend("ips")
-			klb := kl.Extend("blocks")
-
 			// Get CIDR blocks
-			var blocks []*net.IPNet
-			for _, cidr := range strings.Split(c.String("blocks"), ",") {
-				_, ipv4Net, err := net.ParseCIDR(cidr)
-				if err != nil {
-					return err
-				}
-				blocks = append(blocks, ipv4Net)
+			blocks, err := parseInputCIDRs(c.String("blocks"))
+			if err != nil {
+				return err
 			}
-			klb.Printf("total CIDR Blocks %d", len(blocks))
 
 			// Get IPs
-			var ips []*net.IPNet
-			for _, ip := range strings.Split(c.String("ips"), ",") {
-				if !rMask.MatchString(ip) {
-					ip = fmt.Sprintf("%s/32", ip)
-				}
-				_, ipv4Net, err := net.ParseCIDR(ip)
-				if err != nil {
-					return err
-				}
-				ips = append(ips, ipv4Net)
+			ips, err := parseInputIPs(c.String("ips"))
+			if err != nil {
+				return err
 			}
 
-			kli.Printf("total IPs %d", len(ips))
-
 			for _, ip := range ips {
+				fmt.Println(ip.IP.String(), ip.String(), ip.Mask.String(), ip.IP.To16())
 				if strings.HasPrefix(ip.String(), "0.0.0.0") {
 					fmt.Printf("%s is in ALL CIDR sets\n", ip.String())
 				} else if ok, cidr := isCiderIn(ip, blocks); ok {

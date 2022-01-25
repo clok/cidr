@@ -62,6 +62,41 @@ func Test_parseInputCIDRs(t *testing.T) {
 	})
 }
 
+func Test_parseInputIPs(t *testing.T) {
+	is := assert.New(t)
+
+	t.Run("successfully parses", func(t *testing.T) {
+		var blocks []*net.IPNet
+		var err error
+		blocks, err = parseInputIPs("1.2.3.4/32")
+		is.NoError(err)
+		is.Equal("1.2.3.4/32", blocks[0].String())
+
+		blocks, err = parseInputIPs("1.2.3.4")
+		is.NoError(err)
+		is.Equal("1.2.3.4/32", blocks[0].String())
+
+		blocks, err = parseInputIPs("1.2.3.4/32,1.2.3.4,1.3.0.0/16,1.3.0.0")
+		is.NoError(err)
+		is.Equal("1.2.3.4/32", blocks[0].String())
+		is.Equal("1.2.3.4/32", blocks[1].String())
+		is.Equal("1.3.0.0/16", blocks[2].String())
+		is.Equal("1.3.0.0/32", blocks[3].String())
+	})
+
+	t.Run("error while parsing", func(t *testing.T) {
+		var blocks []*net.IPNet
+		var err error
+		blocks, err = parseInputIPs("1.2.3")
+		is.Error(err)
+		is.Nil(blocks)
+
+		blocks, err = parseInputIPs("")
+		is.Error(err)
+		is.Nil(blocks)
+	})
+}
+
 func Test_processLine(t *testing.T) {
 	is := assert.New(t)
 

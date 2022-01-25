@@ -37,7 +37,7 @@ within the provided CIDR blocks.
 			&cli.BoolFlag{
 				Name:    "inverse",
 				Aliases: []string{"i"},
-				Usage:   "print out lines that DO NOT match the CIDR check",
+				Usage:   "Print out lines that DO NOT match the CIDR check",
 			},
 		},
 		Action: func(c *cli.Context) error {
@@ -76,28 +76,31 @@ within the provided CIDR blocks.
 						return err
 					}
 				}
-			} else {
-				// run in pipe pass blocks
-				info, err := os.Stdin.Stat()
-				if err != nil {
-					return err
-				}
 
-				if info.Mode()&os.ModeCharDevice != 0 || info.Size() <= 0 {
-					// if neither, throw error
-					return fmt.Errorf("please use this command with a pipe or the --path flag set")
-				}
-
-				reader := bufio.NewReader(os.Stdin)
-				err = processReader(&processReaderInput{
-					reader:  reader,
-					blocks:  blocks,
-					inverse: c.Bool("inverse"),
-				})
-				if err != nil {
-					return err
-				}
+				return nil
 			}
+
+			// run in pipe pass blocks
+			info, err := os.Stdin.Stat()
+			if err != nil {
+				return err
+			}
+
+			if info.Mode()&os.ModeCharDevice != 0 || info.Size() <= 0 {
+				// if neither, throw error
+				return fmt.Errorf("please use this command with a pipe or the --path flag set")
+			}
+
+			reader := bufio.NewReader(os.Stdin)
+			err = processReader(&processReaderInput{
+				reader:  reader,
+				blocks:  blocks,
+				inverse: c.Bool("inverse"),
+			})
+			if err != nil {
+				return err
+			}
+
 			return nil
 		},
 	}
