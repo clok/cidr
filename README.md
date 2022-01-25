@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/clok/cidr/badge.svg)](https://coveralls.io/github/clok/cidr)
 [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/clok/cidr?tab=overview)
 
-CLI tool for checking IPs against CIDR blocks
+A CLI tool that is useful for quickly checking and filtering data by IP vs. CIDR blocks.
 
 > Please see [the docs for details on the commands.](./docs/cidr.md)
 

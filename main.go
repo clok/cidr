@@ -39,6 +39,33 @@ func main() {
 	}
 	app.Version = version
 	app.Usage = "tool for checking IPs against CIDR blocks"
+	app.UsageText = `
+A CLI tool that is useful for quickly checking and filtering data by IP vs. CIDR blocks.
+
+The 'check'' command allows for a quick check of a list of IPs and Blocks.
+
+	$ cidr check --blocks 172.12.0.0/16,172.10.0.0/16 --ips 172.12.1.56,171.10.123.57,172.10.0.255/32
+	172.12.1.56/32 is in CIDR 172.12.0.0/16
+	171.10.123.57/32 is NOT in CIDR set
+	172.10.0.255/32 is in CIDR 172.10.0.0/16
+
+The 'filter' command is useful for filtering large data sets like access log files.
+
+	$ cidr filter --blocks 10.2.120.0/8,10.2.122.0/8,10.20.128.20/29 --path '/var/log/http/**/access*.log'
+	< outputs to STDOUT all lines that contain an IP that is within a CIDR blocks provided >
+
+The 'filter' command can also be used with a pipe.
+
+	$ cidr filter --blocks 10.2.120.0/8,10.2.122.0/8,10.20.128.20/29 < /var/log/http/access-20220120-18.log
+	< outputs to STDOUT all lines that contain an IP that is within a CIDR blocks provided >
+
+Finally, the 'filter' command accepts the '--inverse, i' flag which will output all lines that DO NOT contain
+an IP within a CIDR block provided. If a line has multiple IP addresses within it, then ALL IPs must not be within
+a CIDR block for the line to be output to STDOUT.
+
+	$ cidr filter --blocks 10.2.120.0/8,10.2.122.0/8,10.20.128.20/29 --path '/var/log/http/**/access*.log' --inverse
+	< outputs to STDOUT all lines that DO NOT contain an IP that is within a CIDR blocks provided >
+`
 	app.Commands = []*cli.Command{
 		// Check checks input flag with provided CIDR blocks
 		commands.CommandCheck,
