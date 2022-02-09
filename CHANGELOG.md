@@ -2,12 +2,19 @@
 ## [Unreleased]
 
 
+<a name="v0.1.2"></a>
+## [v0.1.2] - 2022-02-09
+### Bug Fixes
+- **pipe:** more robust pipe detection
+  
+  
 <a name="v0.1.1"></a>
 ## [v0.1.1] - 2022-01-24
 ### Chores
 - update README
   - **docs:** updating docs for version v0.1.1
   - **docs:** update CLI generated documentation
+  - **release:** v0.1.1
   
   ### Code Refactoring
 - clean up code and reduce duplication
@@ -94,7 +101,8 @@
 - **check:** initial check command
   
   
-[Unreleased]: https://github.com/clok/cidr/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/clok/cidr/compare/v0.1.2...HEAD
+[v0.1.2]: https://github.com/clok/cidr/compare/v0.1.1...v0.1.2
 [v0.1.1]: https://github.com/clok/cidr/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/clok/cidr/compare/v0.0.7...v0.1.0
 [v0.0.7]: https://github.com/clok/cidr/compare/v0.0.6...v0.0.7
