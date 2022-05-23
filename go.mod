@@ -6,11 +6,12 @@ require (
 	github.com/clok/cdocs v1.2.0
 	github.com/clok/kemba v1.1.1
 	github.com/stretchr/testify v1.7.1
-	github.com/urfave/cli/v2 v2.4.0
+	github.com/urfave/cli/v2 v2.8.0
 	github.com/yargevad/filepathx v1.0.0
 )
 
 require (
+	github.com/antzucaro/matchr v0.0.0-20210222213004-b04723ef80f0 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gookit/color v1.3.8 // indirect
