@@ -19,3 +19,17 @@ linters:
     - revive
     - misspell
     - unconvert
+
+linters-settings:
+  depguard:
+    rules:
+      prevent_unmaintained_packages:
+        list-mode: lax # allow unless explicitely denied
+        files:
+          - $all
+          - "!$test"
+        allow:
+          - $gostd
+          - 'github.com/clok'
+          - 'github.com/urfave/cli/v2'
+          - 'github.com/yargevad/filepathx'
