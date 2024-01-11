@@ -3,23 +3,27 @@
 
 
 <a name="v0.1.3"></a>
-## [v0.1.3] - 2024-01-10
-### Chores
+## [v0.1.3] - 2024-01-11
+### Bug Fixes
+- **ci:** typo in releaser image
+  
+  ### Chores
 - **ci:** update linter and go version ([#18](https://github.com/clok/cidr/issues/18))
-  - **deps:** update all non-major dependencies ([#9](https://github.com/clok/cidr/issues/9))
-  - **deps:** update goreleaser/goreleaser-action action to v3 ([#8](https://github.com/clok/cidr/issues/8))
   - **deps:** update docker/login-action action to v3 ([#16](https://github.com/clok/cidr/issues/16))
+  - **deps:** update goreleaser/goreleaser-action action to v3 ([#8](https://github.com/clok/cidr/issues/8))
+  - **deps:** update actions/setup-go action to v5 ([#17](https://github.com/clok/cidr/issues/17))
+  - **deps:** update golangci/golangci-lint-action action to v3 ([#2](https://github.com/clok/cidr/issues/2))
   - **deps:** update goreleaser/goreleaser-action action to v5 ([#15](https://github.com/clok/cidr/issues/15))
   - **deps:** update actions/checkout action to v4 ([#14](https://github.com/clok/cidr/issues/14))
-  - **deps:** update golangci/golangci-lint-action action to v3 ([#2](https://github.com/clok/cidr/issues/2))
   - **deps:** update coverallsapp/github-action action to v2 ([#11](https://github.com/clok/cidr/issues/11))
-  - **deps:** update actions/setup-go action to v5 ([#17](https://github.com/clok/cidr/issues/17))
+  - **deps:** update actions/setup-go action to v3 ([#3](https://github.com/clok/cidr/issues/3))
+  - **deps:** update all non-major dependencies ([#9](https://github.com/clok/cidr/issues/9))
   - **deps:** update docker/login-action action to v2 ([#7](https://github.com/clok/cidr/issues/7))
   - **deps:** update all non-major dependencies ([#6](https://github.com/clok/cidr/issues/6))
   - **deps:** update all non-major dependencies ([#5](https://github.com/clok/cidr/issues/5))
   - **deps:** update actions/checkout action to v3 ([#4](https://github.com/clok/cidr/issues/4))
-  - **deps:** update actions/setup-go action to v3 ([#3](https://github.com/clok/cidr/issues/3))
   - **docs:** updating docs for version v0.1.3
+  - **release:** v0.1.3
   
   
 <a name="v0.1.2"></a>
