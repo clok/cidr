@@ -2,10 +2,27 @@
 ## [Unreleased]
 
 
+<a name="v0.1.3"></a>
+## [v0.1.3] - 2024-01-10
+### Chores
+- **ci:** update linter and go version
+  - **deps:** update goreleaser/goreleaser-action action to v3 ([#8](https://github.com/clok/cidr/issues/8))
+  - **deps:** update docker/login-action action to v2 ([#7](https://github.com/clok/cidr/issues/7))
+  - **deps:** update all non-major dependencies ([#6](https://github.com/clok/cidr/issues/6))
+  - **deps:** update all non-major dependencies ([#5](https://github.com/clok/cidr/issues/5))
+  - **deps:** update actions/checkout action to v3 ([#4](https://github.com/clok/cidr/issues/4))
+  - **deps:** update actions/setup-go action to v3 ([#3](https://github.com/clok/cidr/issues/3))
+  - **deps:** update golangci/golangci-lint-action action to v3 ([#2](https://github.com/clok/cidr/issues/2))
+  - **docs:** updating docs for version v0.1.3
+  
+  
 <a name="v0.1.2"></a>
 ## [v0.1.2] - 2022-02-09
 ### Bug Fixes
 - **pipe:** more robust pipe detection
+  
+  ### Chores
+- **release:** v0.1.2
   
   
 <a name="v0.1.1"></a>
@@ -101,7 +118,8 @@
 - **check:** initial check command
   
   
-[Unreleased]: https://github.com/clok/cidr/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/clok/cidr/compare/v0.1.3...HEAD
+[v0.1.3]: https://github.com/clok/cidr/compare/v0.1.2...v0.1.3
 [v0.1.2]: https://github.com/clok/cidr/compare/v0.1.1...v0.1.2
 [v0.1.1]: https://github.com/clok/cidr/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/clok/cidr/compare/v0.0.7...v0.1.0
