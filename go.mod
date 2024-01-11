@@ -1,6 +1,6 @@
 module github.com/clok/cidr
 
-go 1.17
+go 1.18
 
 require (
 	github.com/clok/cdocs v1.2.0
