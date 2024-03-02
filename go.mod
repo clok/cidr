@@ -3,15 +3,15 @@ module github.com/clok/cidr
 go 1.18
 
 require (
-	github.com/clok/cdocs v1.2.0
+	github.com/clok/cdocs v1.3.0
 	github.com/clok/kemba v1.2.1
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.9.0
 	github.com/urfave/cli/v2 v2.27.1
 	github.com/yargevad/filepathx v1.0.0
 )
 
 require (
-	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
+	github.com/cpuguy83/go-md2man/v2 v2.0.3 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gookit/color v1.5.4 // indirect
 	github.com/kr/pretty v0.3.1 // indirect
