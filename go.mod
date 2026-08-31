@@ -1,12 +1,13 @@
 module github.com/clok/cidr
 
-go 1.18
+go 1.22
 
 require (
 	github.com/clok/cdocs v1.2.0
 	github.com/clok/kemba v1.2.1
-	github.com/stretchr/testify v1.8.4
-	github.com/urfave/cli/v2 v2.27.1
+	github.com/stretchr/testify v1.11.1
+	github.com/urfave/cli/v2 v2.3.0
+	github.com/urfave/cli/v3 v3.11.0
 	github.com/yargevad/filepathx v1.0.0
 )
 
