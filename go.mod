@@ -1,12 +1,13 @@
 module github.com/clok/cidr
 
-go 1.18
+go 1.22
 
 require (
 	github.com/clok/cdocs v1.2.0
 	github.com/clok/kemba v1.2.1
-	github.com/stretchr/testify v1.8.4
-	github.com/urfave/cli/v2 v2.27.1
+	github.com/stretchr/testify v1.12.1
+	github.com/urfave/cli/v2 v2.3.0
+	github.com/urfave/cli/v3 v3.12.0
 	github.com/yargevad/filepathx v1.0.0
 )
 
@@ -21,6 +22,7 @@ require (
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/xo/terminfo v0.0.0-20210125001918-ca9a967f8778 // indirect
 	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect
+	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/sys v0.10.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
